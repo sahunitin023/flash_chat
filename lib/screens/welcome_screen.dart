@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcome_screen';
@@ -49,16 +50,21 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     child: Image.asset('images/logo.png'),
                   ),
                 ),
-                Hero(
-                  tag: 'title',
-                  child: Text(
-                    'Flash Chat',
-                    style: GoogleFonts.rammettoOne(
-                      textStyle: const TextStyle(
-                        fontSize: 35.0,
+                AnimatedTextKit(
+                  totalRepeatCount: 1,
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                      'Flash Chat',
+                      curve: Curves.easeIn,
+                      speed: const Duration(milliseconds: 100),
+                      textStyle: GoogleFonts.rammettoOne(
+                        textStyle: const TextStyle(
+                          fontSize: 35.0,
+                          color: Colors.black87,
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ],
             ),

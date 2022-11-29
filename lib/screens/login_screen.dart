@@ -35,6 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
               style: GoogleFonts.rammettoOne(
                 textStyle: const TextStyle(
                   fontSize: 30.0,
+                  color: Colors.black87,
                 ),
               ),
             ),

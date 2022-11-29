@@ -35,6 +35,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               style: GoogleFonts.rammettoOne(
                 textStyle: const TextStyle(
                   fontSize: 30.0,
+                  color: Colors.black87,
                 ),
               ),
             ),
