@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
-  static String id = 'login_screen';
+  static const String id = 'login_screen';
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -22,12 +22,15 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            SizedBox(
-              height: 200.0,
-              child: Image.asset('images/logo.png'),
+            Hero(
+              tag: 'logo',
+              child: SizedBox(
+                height: 200.0,
+                child: Image.asset('images/logo.png'),
+              ),
             ),
             Text(
-              'Flash Chat',
+              'Login',
               textAlign: TextAlign.center,
               style: GoogleFonts.rammettoOne(
                 textStyle: const TextStyle(
