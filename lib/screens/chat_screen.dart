@@ -1,7 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:flash_chat/constants.dart';
+import 'package:flash_chat/components/constants.dart';
 
 class ChatScreen extends StatefulWidget {
   static const String id = 'chat_screen';
@@ -19,10 +19,11 @@ class _ChatScreenState extends State<ChatScreen> {
         leading: null,
         actions: <Widget>[
           IconButton(
-              icon: const Icon(Icons.close),
-              onPressed: () {
-                //Implement logout functionality
-              }),
+            icon: const Icon(Icons.close),
+            onPressed: () {
+              //Implement logout functionality
+            },
+          ),
         ],
         title: const Text('⚡️Chat'),
         backgroundColor: Colors.lightBlueAccent,

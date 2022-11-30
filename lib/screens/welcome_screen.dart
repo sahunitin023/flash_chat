@@ -1,8 +1,11 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'package:flash_chat/screens/login_screen.dart';
+import 'package:flash_chat/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flash_chat/components/rounded_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcome_screen';
@@ -32,6 +35,12 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    controller.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: animation.value,
@@ -51,7 +60,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   ),
                 ),
                 AnimatedTextKit(
-                  totalRepeatCount: 1,
                   animatedTexts: [
                     TypewriterAnimatedText(
                       'Flash Chat',
@@ -71,41 +79,16 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             const SizedBox(
               height: 48.0,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, 'login_screen');
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: const Text(
-                    'Log In',
-                  ),
-                ),
-              ),
+            IntroButton(
+              onPress: () => Navigator.pushNamed(context, LoginScreen.id),
+              bgColor: Colors.lightBlueAccent,
+              title: "Log in",
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, 'registration_screen');
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: const Text(
-                    'Register',
-                  ),
-                ),
-              ),
+            IntroButton(
+              onPress: () =>
+                  Navigator.pushNamed(context, RegistrationScreen.id),
+              bgColor: Colors.blueAccent,
+              title: "Register",
             ),
           ],
         ),
