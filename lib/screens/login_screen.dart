@@ -1,5 +1,6 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, avoid_print, use_build_context_synchronously
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flash_chat/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,6 +16,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  late String exEmail;
+  late String exPassword;
+  final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,8 +50,10 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 48.0,
             ),
             TextField(
+              textAlign: TextAlign.center,
+              keyboardType: TextInputType.emailAddress,
               onChanged: (value) {
-                //Do something with the user input.
+                exEmail = value;
               },
               style: const TextStyle(
                 color: Colors.black,
@@ -60,8 +66,10 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 8.0,
             ),
             TextField(
+              textAlign: TextAlign.center,
+              obscureText: true,
               onChanged: (value) {
-                //Do something with the user input.
+                exPassword = value;
               },
               style: const TextStyle(
                 color: Colors.black,
@@ -74,7 +82,15 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 24.0,
             ),
             IntroButton(
-              onPress: () => Navigator.pushNamed(context, ChatScreen.id),
+              onPress: () async {
+                try {
+                  await _auth.signInWithEmailAndPassword(
+                      email: exEmail, password: exPassword);
+                  Navigator.pushNamed(context, ChatScreen.id);
+                } catch (e) {
+                  print(e);
+                }
+              },
               bgColor: Colors.lightBlueAccent,
               title: "Log in",
             ),
