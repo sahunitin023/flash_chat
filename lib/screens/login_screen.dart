@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api, avoid_print, use_build_context_synchronously
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flash_chat/screens/chat_screen.dart';
